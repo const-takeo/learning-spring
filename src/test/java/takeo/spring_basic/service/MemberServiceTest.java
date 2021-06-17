@@ -72,7 +72,5 @@ class MemberServiceTest {
         //then
         Assertions.assertThat(illegalStateException.getMessage()).isEqualTo("TestUserメンバーが既に存在します。");
         Assertions.assertThat(memberService.findMembers().size()).isEqualTo(1);
-
-
     }
 }

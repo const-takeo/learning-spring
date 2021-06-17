@@ -1,16 +1,19 @@
 package takeo.spring_basic.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import takeo.spring_basic.domain.Member;
 import takeo.spring_basic.repository.MemberRepository;
-import takeo.spring_basic.repository.MemoryMemberRepository;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class MemberService {
 
     private final MemberRepository memberRepository;
 
+    @Autowired
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
