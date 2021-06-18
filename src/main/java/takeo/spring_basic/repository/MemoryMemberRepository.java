@@ -11,7 +11,6 @@ public class MemoryMemberRepository implements MemberRepository {
     private static Long sequence = 0L;
 
     @Override
-
     public Member save(Member member) {
         member.setId(++sequence);
         store.put(member.getId(), member);

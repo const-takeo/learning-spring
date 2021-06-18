@@ -1,7 +1,5 @@
 package takeo.spring_basic.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import takeo.spring_basic.domain.Member;
 import takeo.spring_basic.repository.MemberRepository;
 
@@ -26,6 +24,11 @@ public class MemberService {
         memberRepository.findByName(member.getName()).ifPresent(m -> {
             throw new IllegalStateException(m.getName() + "メンバーが既に存在します。");
         });
+        //OptionalのifPresentは使わないほうがいい
+//        memberRepository.findByName(member.getName()).orElseThrow(() -> {
+//            throw new IllegalStateException(member.getName() + "メンバーが既に存在します。");
+//        });
+
     }
 
     public List<Member> findMembers() {
