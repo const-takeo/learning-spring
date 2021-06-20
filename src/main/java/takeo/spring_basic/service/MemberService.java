@@ -1,11 +1,14 @@
 package takeo.spring_basic.service;
 
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import takeo.spring_basic.domain.Member;
 import takeo.spring_basic.repository.MemberRepository;
 
 import java.util.List;
 import java.util.Optional;
 
+@Transactional
 public class MemberService {
 
     private final MemberRepository memberRepository;
