@@ -25,7 +25,7 @@ class MemberServiceIntegrationTest {
 
     @AfterEach
     void afterEach() {
-        memberRepository.clearStore();
+
     }
 
     @Test

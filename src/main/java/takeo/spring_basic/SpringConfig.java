@@ -3,10 +3,7 @@ package takeo.spring_basic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import takeo.spring_basic.repository.JdbcTemplateRepository;
-import takeo.spring_basic.repository.JpaMemberRepository;
-import takeo.spring_basic.repository.MemberRepository;
-import takeo.spring_basic.repository.MemoryMemberRepository;
+import takeo.spring_basic.repository.*;
 import takeo.spring_basic.service.MemberService;
 
 import javax.persistence.EntityManager;
@@ -20,23 +17,31 @@ public class SpringConfig {
 //        this.dataSource = dataSource;
 //    }
 
-    private final DataSource dataSource;
-    private final EntityManager entityManager;
+//    private final DataSource dataSource;
+//    private final EntityManager entityManager;
+//
+//    public SpringConfig(DataSource dataSource, EntityManager entityManager) {
+//        this.dataSource = dataSource;
+//        this.entityManager = entityManager;
+//    }
 
-    public SpringConfig(DataSource dataSource, EntityManager entityManager) {
-        this.dataSource = dataSource;
-        this.entityManager = entityManager;
+    // spring data jpaがbeanとして追加したものを自動注入
+    private final MemberRepository memberRepository;
+
+    @Autowired
+    public SpringConfig(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
     }
 
     @Bean
     public MemberService memberService() {
-        return new MemberService(memberRepository());
+        return new MemberService(memberRepository);
     }
 
-    @Bean
-    public MemberRepository memberRepository() {
-//        return new MemoryMemberRepository();
-//        return new JdbcTemplateRepository(dataSource);
-        return new JpaMemberRepository(entityManager);
-    }
+//    @Bean
+//    public MemberRepository memberRepository() {
+////        return new MemoryMemberRepository();
+////        return new JdbcTemplateRepository(dataSource);
+//        return new JpaMemberRepository(entityManager);
+//    }
 }

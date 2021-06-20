@@ -39,8 +39,4 @@ public class JpaMemberRepository implements MemberRepository{
         return entityManager.createQuery("select m from Member as m", Member.class).getResultList();
     }
 
-    @Override
-    public void clearStore() {
-
-    }
 }

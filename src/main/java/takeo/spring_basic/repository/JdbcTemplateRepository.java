@@ -50,8 +50,4 @@ public class JdbcTemplateRepository implements MemberRepository{
         return null;
     }
 
-    @Override
-    public void clearStore() {
-
-    }
 }

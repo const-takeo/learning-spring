@@ -11,7 +11,6 @@ public class MemmoryMemberRepositoryTest {
 
     @AfterEach
     void afterEach() {
-        memberRepository.clearStore();
     }
 
     @Test
