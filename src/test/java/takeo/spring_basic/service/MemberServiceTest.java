@@ -31,15 +31,23 @@ class MemberServiceTest {
 
     @Test
     void join() throws Exception {
-        //given
-        Member member = new Member();
-        member.setName("TestMember1");
-        //when
-        Long joinMemberId = memberService.join(member);
-        //then
-        memberService.findOne(joinMemberId).ifPresent(member1 -> {
-            Assertions.assertThat(member1).isEqualTo(member);
-        });
+        long start = System.currentTimeMillis();
+        try {
+
+            //given
+            Member member = new Member();
+            member.setName("TestMember1");
+            //when
+            Long joinMemberId = memberService.join(member);
+            //then
+            memberService.findOne(joinMemberId).ifPresent(member1 -> {
+                Assertions.assertThat(member1).isEqualTo(member);
+            });
+        }finally {
+            long finalTime = System.currentTimeMillis();
+            long executeTime = finalTime - start;
+            System.out.println("executeTime = " + executeTime);
+        }
     }
 
     @Test
